@@ -1,5 +1,6 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'stencil-library',
@@ -26,4 +27,5 @@ export const config: Config = {
   testing: {
     browserHeadless: 'new',
   },
+  plugins: [sass({ includePaths: ['node_modules'] })],
 };

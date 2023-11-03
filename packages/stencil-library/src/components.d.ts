@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface GhudCard {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +24,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGhudCardElement extends Components.GhudCard, HTMLStencilElement {
+    }
+    var HTMLGhudCardElement: {
+        prototype: HTMLGhudCardElement;
+        new (): HTMLGhudCardElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +37,13 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "ghud-card": HTMLGhudCardElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface GhudCard {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +59,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "ghud-card": GhudCard;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +67,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "ghud-card": LocalJSX.GhudCard & JSXBase.HTMLAttributes<HTMLGhudCardElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
